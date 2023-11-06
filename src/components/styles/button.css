@@ -1,0 +1,26 @@
+.button {
+    min-width: min-content;
+    width: 8rem;
+    height: min-content;
+    padding: 0 2rem;
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: #5e5e5e 1px solid;
+}
+
+.button-default {
+    background-color: #efefef;
+    color: #2a2a2a;
+}
+
+.button-reset {
+    background-color: #ff4729;
+    color: #eeeeee;
+}
+
+.button-text {
+    height: min-content;
+    padding: 1rem;
+}

@@ -1,0 +1,13 @@
+.number-input-container {
+    display: inherit;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.number-input {
+    margin-right: 2rem;
+    width: 50%;
+    font-size: 2em;
+    border-radius: 10px;
+}
