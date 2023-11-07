@@ -8,7 +8,7 @@ const ResultLine = () => {
   return (
     <div className="result-line">
       <div className="entry-history">
-        {state.inputHistory}
+        {state.inputHistory.join(' ')}
       </div>
       <div className="result">
         {state.result && (

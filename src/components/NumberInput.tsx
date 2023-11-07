@@ -1,21 +1,21 @@
 import React from 'react';
-import { Action, useAppContext } from '../context/AppContext';
+import { CalculationHelper } from '../calculation-helper';
+import { ActionType, useAppContext } from '../context/AppContext';
 import './styles/number-input.css';
 import Button from './ui/Button';
 
-const NumberInput = (): React.ReactElement => {
-  const { state, dispatch } = useAppContext();
-  const onChangeHandler = (value: string) => {
-    const action: Action = { type: 'updateCurrentInputValue', payload: value };
-    console.log('onChangeHandler: action', action);
-    dispatch(action);
-  };
+interface NumberInputProps {
+  value: string | number,
+  onChangeHandler: (value: string) => void
+}
+
+const NumberInput = ({ value, onChangeHandler }: NumberInputProps): React.ReactElement => {
   return (
     <div className="number-input-container">
       <input
         className="number-input"
         inputMode="numeric"
-        value={state.currentInputValue ?? ''}
+        value={value}
         onChange={(event) => onChangeHandler(event.target.value)}
       />
     </div>
@@ -23,12 +23,30 @@ const NumberInput = (): React.ReactElement => {
 };
 
 const NumberInputContainer = (): React.ReactElement => {
-  const handler = () => {
+  const { state, dispatch } = useAppContext();
+  
+  const onInputChange = (value: string) => {
+    dispatch({
+      type: ActionType.UPDATE_INPUT_VALUE,
+      value,
+    });
   };
+  
+  const onEnterClicked = () => {
+    if (state.inputHistory) {
+      dispatch({ type: ActionType.UPDATE_INPUT_HISTORY });
+      const result = CalculationHelper.calculate(state.inputHistory);
+      dispatch({
+        type: ActionType.UPDATE_RESULT,
+        result,
+      });
+    }
+  };
+  
   return (
     <div className="number-input-container">
-      <NumberInput />
-      <Button text="ENTER" handler={handler} isEnter />
+      <NumberInput value={state.currentInputValue ?? ''} onChangeHandler={onInputChange} />
+      <Button text="ENTER" handler={onEnterClicked} isEnter />
     </div>
   );
 };
