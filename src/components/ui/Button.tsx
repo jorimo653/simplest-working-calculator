@@ -8,7 +8,7 @@ export interface ButtonProps {
   isEnter?: boolean
 }
 
-const Button = ({ text, handler, isReset = false, isEnter = false }: ButtonProps): React.ReactElement => {
+const Button = ({ text, handler, isReset = false }: ButtonProps): React.ReactElement => {
   
   return (
     <div className={`button ${isReset ? 'button-reset' : 'button-default'}`} onClick={handler}>

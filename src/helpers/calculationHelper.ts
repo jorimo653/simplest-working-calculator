@@ -1,7 +1,6 @@
-import { Operator } from './constants';
-import { Nullable } from './types';
+import { Operator } from '../constants';
 
-export class Helpers {
+export class CalculationHelper {
   private static readonly operatorMap = new Map<Operator, (n1: number, n2: number) => number>([
     [Operator.ADD, (n1: number, n2: number) => (n1 + n2)],
     [Operator.SUBTRACT, (n1: number, n2: number) => (n1 - n2)],
@@ -20,14 +19,4 @@ export class Helpers {
     }
     return result as unknown as number;
   }
-}
-
-export function buildHistoryString(previousValue: Nullable<string>, newValue: string, operator?: Operator, isLast: boolean = false): string {
-  let str;
-  if (previousValue == null) {
-    str = `${newValue} ${operator} `;
-  } else {
-    str = [previousValue, newValue].join(` ${operator} `);
-  }
-  return str;
 }

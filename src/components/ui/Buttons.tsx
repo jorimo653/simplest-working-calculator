@@ -3,11 +3,7 @@ import { ActionType, useAppContext } from '../../context/AppContext';
 import '../styles/buttons.css';
 import Button from './Button';
 
-export interface ButtonsProps {
-  //
-}
-
-const Buttons = (props: ButtonsProps) => {
+const Buttons = () => {
   const { state, dispatch } = useAppContext();
   
   const currentInputValid = (): boolean => {

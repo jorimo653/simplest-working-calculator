@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { Operator } from '../constants';
-import { Helpers } from '../helpers';
+import { CalculationHelper } from '../helpers/calculationHelper';
 import { Nullable } from '../types';
 
 export interface State {
@@ -43,8 +43,9 @@ function reducer(state: State, action: Action): State {
     case ActionType.UPDATE_RESULT:
       return {
         ...state,
-        result: Helpers.calculate([...state.inputHistory, state.currentInputValue!]),
+        result: CalculationHelper.calculate([...state.inputHistory, state.currentInputValue!]),
         inputHistory: [...state.inputHistory, state.currentInputValue as number],
+        currentInputValue: null,
       };
     case ActionType.CLEAR_INPUT:
       return { ...state, inputHistory: [], currentInputValue: null };

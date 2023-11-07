@@ -32,7 +32,7 @@ const NumberInputContainer = (): React.ReactElement => {
   };
   
   const onEnterClicked = () => {
-    if (state.inputHistory && state.result == null) {
+    if (state.inputHistory.length > 0 && state.result == null) {
       dispatch({ type: ActionType.UPDATE_RESULT });
     }
   };
