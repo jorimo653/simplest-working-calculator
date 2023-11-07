@@ -2,10 +2,10 @@ import { Operator } from '../constants';
 
 export class CalculationHelper {
   private static readonly operatorMap = new Map<Operator, (n1: number, n2: number) => number>([
-    [Operator.ADD, (n1: number, n2: number) => (n1 + n2)],
-    [Operator.SUBTRACT, (n1: number, n2: number) => (n1 - n2)],
-    [Operator.MULTIPLY, (n1: number, n2: number) => (n1 * n2)],
-    [Operator.DIVIDE, (n1: number, n2: number) => (n1 / n2)],
+    [Operator.ADD, (n1, n2) => (n1 + n2)],
+    [Operator.SUBTRACT, (n1, n2) => (n1 - n2)],
+    [Operator.MULTIPLY, (n1, n2) => (n1 * n2)],
+    [Operator.DIVIDE, (n1, n2) => (n1 / n2)],
   ]);
   
   static calculate(inputHistory: Array<Operator | number>): number {

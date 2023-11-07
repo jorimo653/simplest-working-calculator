@@ -40,7 +40,7 @@ const NumberInputContainer = (): React.ReactElement => {
   return (
     <div className="number-input-container">
       <NumberInput value={state.currentInputValue ?? ''} onChangeHandler={onInputChange} />
-      <Button text="ENTER" handler={onEnterClicked} isEnter />
+      <Button text="ENTER" handler={onEnterClicked} />
     </div>
   );
 };

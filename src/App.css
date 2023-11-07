@@ -8,21 +8,29 @@
     flex-direction: column;
 }
 
+.inner-container {
+    display: inherit;
+    flex-direction: column;
+    width: 60%;
+    height: min-content;
+    padding: 2rem;
+    border-radius: 12px;
+    border: #2a2a2a 2px solid;
+}
+
 .inner {
     display: inherit;
-    width: 60%;
-    padding: 2rem;
+    width: 100%;
     height: min-content;
 }
 
 .inner-top {
-    background-color: pink;
     flex-direction: column;
     align-items: start;
+    padding-bottom: 2rem;
 }
 
 .inner-bottom {
-    background-color: aqua;
     flex-direction: row;
     justify-content: space-between;
 }

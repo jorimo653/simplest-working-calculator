@@ -11,13 +11,15 @@ function App() {
   return (
     <AppContextProvider>
       <div className="container">
-        <div className="inner inner-top">
-          <Header text={appName} />
-          <ResultLine />
-          <NumberInput />
-        </div>
-        <div className="inner inner-bottom">
-          <Buttons />
+        <div className="inner-container">
+          <div className="inner inner-top">
+            <Header text={appName} />
+            <ResultLine />
+            <NumberInput />
+          </div>
+          <div className="inner inner-bottom">
+            <Buttons />
+          </div>
         </div>
       </div>
     </AppContextProvider>
