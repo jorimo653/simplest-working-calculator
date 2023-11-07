@@ -1,7 +1,7 @@
 import { Operator } from './constants';
 import { Nullable } from './types';
 
-export class CalculationHelper {
+export class Helpers {
   private static readonly operatorMap = new Map<Operator, (n1: number, n2: number) => number>([
     [Operator.ADD, (n1: number, n2: number) => (n1 + n2)],
     [Operator.SUBTRACT, (n1: number, n2: number) => (n1 - n2)],
@@ -10,20 +10,15 @@ export class CalculationHelper {
   ]);
   
   static calculate(inputHistory: Array<Operator | number>): number {
-    let result = 0;
-    
-    console.log('parsed', inputHistory);
-    
-    inputHistory.forEach((it, idx) => {
-      if (this.operatorMap.has(it as Operator)) {
-        console.log('it: ', it);
-        result = this.operatorMap.get(it as Operator)!(+inputHistory[idx - 1], +inputHistory[idx + 1]);
+    let result = undefined;
+    for (let i = 0; i < inputHistory.length; i++) {
+      if (this.operatorMap.has(inputHistory[i] as Operator)) {
+        const n1 = result ?? +inputHistory[i - 1];
+        const n2 = +inputHistory[i + 1];
+        result = this.operatorMap.get(inputHistory[i] as Operator)!(n1, n2);
       }
-    });
-    
-    console.log('result maybe? ', result);
-    
-    return result;
+    }
+    return result as unknown as number;
   }
 }
 

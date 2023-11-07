@@ -1,5 +1,4 @@
 import React from 'react';
-import { CalculationHelper } from '../calculation-helper';
 import { ActionType, useAppContext } from '../context/AppContext';
 import './styles/number-input.css';
 import Button from './ui/Button';
@@ -33,13 +32,8 @@ const NumberInputContainer = (): React.ReactElement => {
   };
   
   const onEnterClicked = () => {
-    if (state.inputHistory) {
-      dispatch({ type: ActionType.UPDATE_INPUT_HISTORY });
-      const result = CalculationHelper.calculate(state.inputHistory);
-      dispatch({
-        type: ActionType.UPDATE_RESULT,
-        result,
-      });
+    if (state.inputHistory && state.result == null) {
+      dispatch({ type: ActionType.UPDATE_RESULT });
     }
   };
   
