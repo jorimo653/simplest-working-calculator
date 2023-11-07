@@ -1,3 +1,17 @@
-.result {
+.result-line {
+    display: inherit;
+    flex-direction: row;
+    width: 45%;
+    min-height: 2rem;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.entry-history {
+
     font-size: 1.5em;
+}
+
+.result {
+    font-size: 2em;
 }

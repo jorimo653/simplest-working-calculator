@@ -43,8 +43,8 @@ const Buttons = (props: ButtonsProps) => {
   
   return (
     <>
-      {buttons.map(it => (
-        <Button text={it.text} handler={it.handler} isReset={it.isReset ?? false} />
+      {buttons.map((it, idx) => (
+        <Button text={it.text} handler={it.handler} isReset={it.isReset ?? false} key={idx} />
       ))}
     </>
   );
